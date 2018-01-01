@@ -122,7 +122,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   digitalWrite(LED_BUILTIN, HIGH);
 
-  /*
+  
   if (stringComplete) {
     Serial.println("Input received."); delay(10);
     // process string
@@ -211,7 +211,7 @@ void loop() {
     }
   }
 
-  */
+  
 }
 
 
