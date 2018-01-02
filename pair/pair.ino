@@ -79,8 +79,8 @@ void setup() {
   pinMode(REMOTE_POWER_PIN, OUTPUT);
 
   // Change PWM frequency to maximum possible
-  TCCR1B = TCCR1B & B11111000 | B00000010;    // set timer 1 (D9 and D10) divisor to     1 for PWM frequency of 31372.55 Hz
-  TCCR2B = TCCR2B & B11111000 | B00000010;    // set timer 2 (D3 and D11) divisor to     1 for PWM frequency of 31372.55 Hz
+  TCCR1B = TCCR1B & B11111000 | B00000001;    // set timer 1 (D9 and D10) divisor to     1 for PWM frequency of 31372.55 Hz
+  TCCR2B = TCCR2B & B11111000 | B00000001;    // set timer 2 (D3 and D11) divisor to     1 for PWM frequency of 31372.55 Hz
 
   analogWrite(THROTTLE_PIN, 0);
   //analogWrite(AILERON_PIN, 150);
