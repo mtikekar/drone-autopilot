@@ -3,6 +3,7 @@
 #define AILERON_PIN 3
 #define ELEVATOR_PIN 9
 #define RUDDER_PIN 10
+#define REMOTE_POWER_PIN 2
 
 #define SERIAL_FREQ 115200
 #define END_OF_COMMAND '\n'
@@ -54,20 +55,18 @@ uint8_t ppm_cnt;
 
 
 int pair(int pin){
-  delay(2000);
+  delay(500);
   //digitalWrite(pin, LOW);
-  analogWrite(pin, LOW);
+  analogWrite(pin, 0);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(2000);
+  delay(500);
   //digitalWrite(pin, HIGH);
   analogWrite(pin, 200);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(2000);
+  delay(500);
   //digitalWrite(pin, LOW);
-  analogWrite(pin, LOW);
+  analogWrite(pin, 0);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(2000);
-  digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void setup() {
@@ -77,6 +76,7 @@ void setup() {
   pinMode(AILERON_PIN, OUTPUT);
   pinMode(ELEVATOR_PIN, OUTPUT);
   pinMode(RUDDER_PIN, OUTPUT);
+  pinMode(REMOTE_POWER_PIN, OUTPUT);
 
   // Change PWM frequency to maximum possible
   TCCR1B = TCCR1B & B11111000 | B00000010;    // set timer 1 (D9 and D10) divisor to     1 for PWM frequency of 31372.55 Hz
@@ -100,6 +100,7 @@ void setup() {
   inputString.reserve(200);
 
   //Pair
+  digitalWrite(REMOTE_POWER_PIN, HIGH);
   pair(THROTTLE_PIN);
   Serial.println("Pairing complete!");
 
